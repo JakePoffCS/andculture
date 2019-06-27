@@ -1,0 +1,47 @@
+class ContentFeed extends React.Component{
+    constructor() {
+        super();
+
+        this.state = {
+            'items': []
+        }
+    }
+    componentDidMount() {
+        this.getItems();
+    }
+
+    getItems() {
+      var results
+      fetch('https://api.openbrewerydb.org/breweries?by_city=Tucson')
+          .then(results => results.json())
+          .then(results => this.setState({ 'items': results }))
+    }
+
+    render() {
+          return (
+            <ul>
+              <h1> Breweries in Tucson: </h1>
+								<br/>
+              {this.state.items.map(function(item, index){
+                return(
+                <div key={index} bg="red">
+                  <h2> {item.name} </h2>
+                    <p>Type:  {item.brewery_type} </p>
+                    <p>Address: {item.street}, {item.city}, {item.state}, {item.postal_code} </p>
+                    <p> <a  href={item.website_url}>Website:  {item.website_url}  </a> </p>
+										<br/>
+										<br/>
+                </div>
+                  )
+              }              
+              )}
+            </ul>
+          );
+    }
+
+}
+
+ReactDOM.render(
+    <ContentFeed />,
+    document.getElementById('root')
+);

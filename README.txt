@@ -1,0 +1,1 @@
+This was my first time working with React JS so I tried to learn the language and achieve the goal of the challenge. I did a lot of research into the language and watched many videos on the language. The code that I have put into this repository is the result of my research as well as my HTML, CSS/BootStrap skills. Thank you.
